@@ -65,7 +65,6 @@ public class City implements Comparable<City>, IEventDispatcher, IEventHadler
             {
                 Database.gi().exec("insert into cities values("+ id_subject +", '', 0, 1000)");
             }
-
             return city;
         }
     }

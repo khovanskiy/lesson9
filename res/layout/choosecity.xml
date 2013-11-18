@@ -9,13 +9,21 @@
             android:layout_width="fill_parent"
             android:layout_height="50dp" android:background="@android:color/holo_blue_dark">
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:text="Choose cities:"
                 android:id="@+id/textView" android:layout_gravity="left|center_vertical"
                 android:textColor="@android:color/white" android:gravity="center_vertical"
                 android:singleLine="true" android:textSize="30dp" android:paddingLeft="10dp"
-                android:paddingRight="10dp"/>
+                android:paddingRight="10dp" android:layout_weight="1"/>
+        <Button
+                android:layout_width="150dp"
+                android:layout_height="fill_parent"
+                android:text="Load"
+                android:id="@+id/button" android:textColor="@android:color/black"
+                android:background="@android:color/holo_orange_light" android:padding="10dp"
+                android:layout_gravity="right" android:gravity="center" android:layout_weight="1"
+                android:onClick="loadAll"/>
     </LinearLayout>
     <ListView
             android:layout_width="wrap_content"
