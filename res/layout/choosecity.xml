@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp" android:background="@android:color/holo_blue_dark">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="Choose cities:"
+                android:id="@+id/textView" android:layout_gravity="left|center_vertical"
+                android:textColor="@android:color/white" android:gravity="center_vertical"
+                android:singleLine="true" android:textSize="30dp" android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
+    </LinearLayout>
+    <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/choosecity_citiesList"/>
+</LinearLayout>

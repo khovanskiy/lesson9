@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp">
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="Somewhere"
+                android:id="@+id/cityNameLabel" android:textSize="30dp" android:singleLine="true"
+                android:gravity="left|fill_vertical" android:textColor="@android:color/white"
+                android:background="@android:color/holo_blue_dark" android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp">
+        <DigitalClock
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/digitalClock" android:layout_gravity="center_vertical|right" android:gravity="center_vertical|right"
+                android:textSize="20dp" android:layout_marginBottom="10dp" android:paddingRight="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp" android:layout_weight="1">
+        <ImageView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/imageView" android:layout_weight="1" android:src="@drawable/clear"
+                android:adjustViewBounds="false" android:scaleType="fitCenter"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:text="40 *"
+                android:id="@+id/cityTemperatureLabel" android:textSize="60dp" android:gravity="center"
+                android:textColor="@android:color/white" android:layout_weight="1" android:singleLine="true"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp" android:layout_gravity="center" android:layout_weight="1">
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:text="Thunderstorms"
+                android:id="@+id/weatherTypeLabel" android:textSize="40dp" android:gravity="center"
+                android:textColor="@android:color/holo_blue_dark"
+                android:singleLine="true"/>
+    </LinearLayout>
+</LinearLayout>
