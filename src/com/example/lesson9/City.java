@@ -10,14 +10,23 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.util.HashMap;
+import java.util.Vector;
 
 public class City implements Comparable<City>, IEventDispatcher, IEventHadler
 {
     static class Day
     {
         public String date = "0000-00-00";
-        public int temperature = 0;
+        public int morning = 0;
+        public int day = 0;
+        public int evening = 0;
+        public int night = 0;
+        public int getAverage()
+        {
+            return (morning + day + evening) / 3;
+        }
     }
+
     private long id_subject = 0;
     public String name = "";
     public int temperature = 1000;
@@ -28,15 +37,13 @@ public class City implements Comparable<City>, IEventDispatcher, IEventHadler
     private static HashMap<Long, City> cities = null;
     public int hum = 0;
     public float speed = 0;
-    public int morning = 0;
-    public int day = 0;
-    public int evening = 0;
-    public int night = 0;
+    public Vector<Day> days;
 
     private City(long id_subject)
     {
         this.id_subject = id_subject;
         event_pull = new EventDispatcher();
+        days = new Vector<Day>(4);
     }
 
     public long getId()
@@ -129,23 +136,30 @@ public class City implements Comparable<City>, IEventDispatcher, IEventHadler
             flush();
 
             list = xml.getDocumentElement().getElementsByTagName("day");
-            parseDay(list.item(0));
-            for (int i = 1; i < 4; ++i)
+            for (int i = 0; i < 4; ++i)
             {
                 Node current = list.item(i);
-                //parseDay(current);
+                days.add(parseDay(current));
             }
-
-            //flush();
-
             dispatchEvent(new Event(this, e.type));
         }
     }
 
-    private void parseDay(Node day)
+    public Day getToday()
     {
+        return days.get(0);
+    }
+
+    public Day getDay(int offset)
+    {
+        return days.get(offset);
+    }
+
+    private Day parseDay(Node day)
+    {
+        Day current = new Day();
         String date = ((Element)day).getAttribute("date");
-        Console.print(date);
+        current.date = date;
         NodeList parts = ((Element) day).getElementsByTagName("day_part");
         for (int i = 0; i < parts.getLength(); ++i)
         {
@@ -154,21 +168,22 @@ public class City implements Comparable<City>, IEventDispatcher, IEventHadler
             int t = Integer.parseInt(part.getChildNodes().item(1).getFirstChild().getNodeValue());
             if (type.equals("morning"))
             {
-                this.morning = t;
+                current.morning = t;
             }
             else if (type.equals("day"))
             {
-                this.day = t;
+                current.day = t;
             }
             else if (type.equals("evening"))
             {
-                this.evening = t;
+                current.evening = t;
             }
             else if (type.equals("night"))
             {
-                this.night = t;
+                current.night = t;
             }
         }
+        return current;
     }
 
     @Override

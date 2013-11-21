@@ -11,11 +11,16 @@
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:text="List of cities"
+                android:text="@string/citiesHeader"
                 android:id="@+id/textView" android:textSize="30dp" android:layout_weight="0"
                 android:layout_gravity="center" android:gravity="center_vertical|left"
                 android:singleLine="true" android:textColor="@android:color/white" android:paddingLeft="10dp"
                 android:paddingRight="10dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textView1" android:layout_gravity="left|center_vertical"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
@@ -24,14 +29,14 @@
         <Button
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:text="Add new city"
+                android:text="@string/addnewcityButton"
                 android:id="@+id/button" android:gravity="center" android:onClick="gotoEditActivity"
                 android:layout_weight="1" android:background="@android:color/holo_orange_light"
                 android:textColor="@android:color/black"/>
         <Button
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:text="Update all"
+                android:text="@string/updateallButton"
                 android:id="@+id/button1" android:layout_weight="1" android:onClick="syncAll"
                 android:background="@android:color/holo_orange_light" android:textColor="@android:color/black"/>
     </LinearLayout>

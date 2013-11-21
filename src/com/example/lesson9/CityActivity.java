@@ -68,10 +68,14 @@ public class CityActivity extends Activity implements IEventHadler
                       setter(R.id.cityweather_humidityView, City.findById(id_city).hum + "%");
                       setter(R.id.cityweather_wind_speedView, City.findById(id_city).speed + " м/c");
 
-                      setter(R.id.cityweather_morningTemperatureView, City.findById(id_city).morning + "°");
-                      setter(R.id.cityweather_dayTemperatureView, City.findById(id_city).day + "°");
-                      setter(R.id.cityweather_eveningTemperatureView, City.findById(id_city).evening + "°");
-                      setter(R.id.cityweather_nightTemperatureView, City.findById(id_city).night + "°");
+                      setter(R.id.cityweather_morningTemperatureView, City.findById(id_city).getToday().morning + "°");
+                      setter(R.id.cityweather_dayTemperatureView, City.findById(id_city).getToday().day + "°");
+                      setter(R.id.cityweather_eveningTemperatureView, City.findById(id_city).getToday().evening + "°");
+                      setter(R.id.cityweather_nightTemperatureView, City.findById(id_city).getToday().night + "°");
+
+                      setter(R.id.cityweather_offset1TemperatureView, City.findById(id_city).getDay(1).getAverage() + "°");
+                      setter(R.id.cityweather_offset2TemperatureView, City.findById(id_city).getDay(2).getAverage() + "°");
+                      setter(R.id.cityweather_offset3TemperatureView, City.findById(id_city).getDay(3).getAverage() + "°");
 
                       ImageView iv = (ImageView)findViewById(R.id.imageView);
                       iv.setImageResource(getImageByType(City.findById(id_city).weather_code));

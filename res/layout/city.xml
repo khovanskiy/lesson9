@@ -14,7 +14,7 @@
                 android:layout_height="fill_parent"
                 android:id="@+id/cityName" android:textSize="45dp"
                 android:textColor="@android:color/holo_blue_dark" android:text="Somewhere" android:layout_weight="1"
-                android:singleLine="true"/>
+                android:singleLine="true" android:paddingLeft="10dp"/>
         <TextView
                 android:layout_width="100dp"
                 android:layout_height="fill_parent"
