@@ -33,10 +33,6 @@ public class Program extends Activity implements IEventHadler {
 
     public void syncAll(View v)
     {
-        if (count != 0)
-        {
-            return;
-        }
         Cursor sth = Database.gi().query("select * from cities where chosen = 1");
         count = sth.getCount();
         while (sth.moveToNext())
@@ -45,6 +41,7 @@ public class Program extends Activity implements IEventHadler {
             city.addEventListener(this);
             city.startUpdate();
         }
+         Toast.makeText(this, "Start updating...", 3000).show();
     }
 
     public void gotoEditActivity(View v)
@@ -61,8 +58,9 @@ public class Program extends Activity implements IEventHadler {
              e.target.addEventListener(this);
              count--;
              final Activity fix = this;
-             if (count == 0)
+             if (count <= 0)
              {
+                 count = 0;
                  runOnUiThread(new Runnable()
                  {
                      @Override
