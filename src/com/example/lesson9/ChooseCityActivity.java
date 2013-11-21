@@ -36,7 +36,7 @@ public class ChooseCityActivity extends Activity implements IEventHadler
         XmlLoader loader = new XmlLoader("http://monplay.tw1.ru/cities.xml");
         loader.addEventListener(this);
         loader.start();
-        Toast.makeText(this, "Starting update. It can takes a few minutes...", 5000).show();
+        Toast.makeText(this, "Starting update. It can takes a few minutes...", 7000).show();
     }
 
     @Override

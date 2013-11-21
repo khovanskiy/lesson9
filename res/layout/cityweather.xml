@@ -2,8 +2,8 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent">
 
     <LinearLayout
             android:orientation="vertical"
@@ -35,25 +35,129 @@
         <ImageView
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:id="@+id/imageView" android:layout_weight="1" android:src="@drawable/clear"
+                android:id="@+id/imageView" android:layout_weight="0.6" android:src="@drawable/clear"
                 android:adjustViewBounds="false" android:scaleType="fitCenter"/>
-        <TextView
+        <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:text="40 *"
-                android:id="@+id/cityTemperatureLabel" android:textSize="60dp" android:gravity="center"
-                android:textColor="@android:color/white" android:layout_weight="1" android:singleLine="true"/>
+                android:layout_height="fill_parent" android:layout_weight="1">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp" android:layout_weight="1" android:paddingLeft="10dp">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:text="Температура"
+                        android:id="@+id/textView3" android:singleLine="true" android:textSize="15dp"
+                        android:textColor="@android:color/holo_orange_light" android:gravity="center_vertical|left"
+                        android:paddingRight="10dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:text="40 *"
+                        android:id="@+id/cityTemperatureLabel" android:textSize="35dp" android:gravity="center_vertical|left"
+                        android:textColor="@android:color/white" android:singleLine="true" android:layout_weight="1"
+                        android:layout_gravity="left|center_vertical"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp" android:layout_weight="1" android:paddingLeft="10dp">
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:text="Влажность"
+                        android:id="@+id/textView" android:layout_weight="1"
+                        android:textColor="@android:color/holo_orange_light" android:singleLine="true"
+                        android:textSize="20dp" android:gravity="bottom"/>
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:text="100%"
+                        android:id="@+id/cityweather_humidityView" android:layout_weight="1" android:singleLine="true"
+                        android:textSize="20dp" android:textColor="@android:color/white" android:gravity="top"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0dp"
+                          android:layout_weight="1" android:id="@+id/linearLayout" android:paddingLeft="10dp">
+                <TextView android:layout_width="fill_parent" android:layout_height="0dp" android:text="Скорость ветра"
+                          android:id="@+id/textView2" android:layout_weight="1"
+                          android:textColor="@android:color/holo_orange_light" android:singleLine="true"
+                          android:textSize="20dp" android:gravity="bottom"/>
+                <TextView android:layout_width="fill_parent" android:layout_height="0dp" android:text="100%"
+                          android:id="@+id/cityweather_wind_speedView" android:layout_weight="1" android:singleLine="true"
+                          android:textSize="20dp" android:textColor="@android:color/white" android:gravity="top"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="0dp" android:layout_gravity="center" android:layout_weight="1">
+            android:layout_height="0dp" android:layout_gravity="center" android:layout_weight="0.5">
         <TextView
                 android:layout_width="fill_parent"
-                android:layout_height="50dp"
+                android:layout_height="fill_parent"
                 android:text="Thunderstorms"
                 android:id="@+id/weatherTypeLabel" android:textSize="40dp" android:gravity="center"
                 android:textColor="@android:color/holo_blue_dark"
                 android:singleLine="true"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent" android:layout_weight="1">
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:text="Утро"
+                        android:id="@+id/textView1" android:layout_weight="1" android:textColor="@android:color/white"
+                        android:background="@android:color/holo_blue_dark" android:gravity="center"
+                        android:singleLine="true" android:textSize="20dp"/>
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:text="10 *"
+                        android:id="@+id/cityweather_morningTemperatureView" android:layout_weight="1" android:gravity="center"
+                        android:textColor="@android:color/holo_orange_light" android:textSize="30dp"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="0dp" android:layout_height="fill_parent"
+                          android:layout_weight="1" android:id="@+id/linearLayout1">
+                <TextView android:layout_width="fill_parent" android:layout_height="0dp" android:text="День"
+                          android:id="@+id/textView4" android:layout_weight="1"
+                          android:textColor="@android:color/white" android:background="@android:color/holo_blue_dark"
+                          android:gravity="center" android:singleLine="true" android:textSize="20dp"/>
+                <TextView android:layout_width="fill_parent" android:layout_height="0dp" android:text="10 *"
+                          android:id="@+id/cityweather_dayTemperatureView" android:layout_weight="1" android:gravity="center"
+                          android:textColor="@android:color/holo_orange_light" android:textSize="30dp"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="0dp" android:layout_height="fill_parent"
+                          android:layout_weight="1" android:id="@+id/linearLayout2">
+                <TextView android:layout_width="fill_parent" android:layout_height="0dp" android:text="Вечер"
+                          android:id="@+id/textView6" android:layout_weight="1"
+                          android:textColor="@android:color/white" android:background="@android:color/holo_blue_dark"
+                          android:gravity="center" android:singleLine="true" android:textSize="20dp"/>
+                <TextView android:layout_width="fill_parent" android:layout_height="0dp" android:text="10 *"
+                          android:id="@+id/cityweather_eveningTemperatureView" android:layout_weight="1" android:gravity="center"
+                          android:textColor="@android:color/holo_orange_light" android:textSize="30dp"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="0dp" android:layout_height="fill_parent"
+                          android:layout_weight="1" android:id="@+id/linearLayout3">
+                <TextView android:layout_width="fill_parent" android:layout_height="0dp" android:text="Ночь"
+                          android:id="@+id/textView8" android:layout_weight="1"
+                          android:textColor="@android:color/white" android:background="@android:color/holo_blue_dark"
+                          android:gravity="center" android:singleLine="true" android:textSize="20dp"/>
+                <TextView android:layout_width="fill_parent" android:layout_height="0dp" android:text="10 *"
+                          android:id="@+id/cityweather_nightTemperatureView" android:layout_weight="1" android:gravity="center"
+                          android:textColor="@android:color/holo_orange_light" android:textSize="30dp"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

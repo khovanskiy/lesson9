@@ -13,6 +13,11 @@ import java.util.HashMap;
 
 public class City implements Comparable<City>, IEventDispatcher, IEventHadler
 {
+    static class Day
+    {
+        public String date = "0000-00-00";
+        public int temperature = 0;
+    }
     private long id_subject = 0;
     public String name = "";
     public int temperature = 1000;
@@ -21,6 +26,12 @@ public class City implements Comparable<City>, IEventDispatcher, IEventHadler
     public boolean chosen = false;
     public EventDispatcher event_pull;
     private static HashMap<Long, City> cities = null;
+    public int hum = 0;
+    public float speed = 0;
+    public int morning = 0;
+    public int day = 0;
+    public int evening = 0;
+    public int night = 0;
 
     private City(long id_subject)
     {
@@ -105,11 +116,58 @@ public class City implements Comparable<City>, IEventDispatcher, IEventHadler
                 {
                     weather_code = ((Element)current).getAttribute("code").replace("-","");
                 }
+                else if (current.getNodeName().equals("humidity"))
+                {
+                    hum =  Integer.parseInt(current.getFirstChild().getNodeValue());
+                }
+                else if (current.getNodeName().equals("wind_speed"))
+                {
+                    speed =  Float.parseFloat(current.getFirstChild().getNodeValue());
+                }
             }
 
             flush();
 
+            list = xml.getDocumentElement().getElementsByTagName("day");
+            parseDay(list.item(0));
+            for (int i = 1; i < 4; ++i)
+            {
+                Node current = list.item(i);
+                //parseDay(current);
+            }
+
+            //flush();
+
             dispatchEvent(new Event(this, e.type));
+        }
+    }
+
+    private void parseDay(Node day)
+    {
+        String date = ((Element)day).getAttribute("date");
+        Console.print(date);
+        NodeList parts = ((Element) day).getElementsByTagName("day_part");
+        for (int i = 0; i < parts.getLength(); ++i)
+        {
+            Node part = parts.item(i);
+            String type = ((Element)part).getAttribute("type");
+            int t = Integer.parseInt(part.getChildNodes().item(1).getFirstChild().getNodeValue());
+            if (type.equals("morning"))
+            {
+                this.morning = t;
+            }
+            else if (type.equals("day"))
+            {
+                this.day = t;
+            }
+            else if (type.equals("evening"))
+            {
+                this.evening = t;
+            }
+            else if (type.equals("night"))
+            {
+                this.night = t;
+            }
         }
     }
 

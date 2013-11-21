@@ -47,6 +47,12 @@ public class CityActivity extends Activity implements IEventHadler
         }
     }
 
+    public void setter(int resourse, String string)
+    {
+        TextView tv = (TextView) findViewById(resourse);
+        tv.setText(string);
+    }
+
     @Override
     public void handleEvent(Event e)
     {
@@ -56,13 +62,16 @@ public class CityActivity extends Activity implements IEventHadler
               runOnUiThread(new Runnable() {
                   @Override
                   public void run() {
-                      TextView tv = (TextView) findViewById(R.id.cityNameLabel);
-                      tv.setText(City.findById(id_city).name + "");
-                      TextView tv1 = (TextView) findViewById(R.id.cityTemperatureLabel);
-                      tv1.setText(City.findById(id_city).temperature + "°");
+                      setter(R.id.cityNameLabel, City.findById(id_city).name);
+                      setter(R.id.cityTemperatureLabel, City.findById(id_city).temperature + "°");
+                      setter(R.id.weatherTypeLabel, City.findById(id_city).weather_desc);
+                      setter(R.id.cityweather_humidityView, City.findById(id_city).hum + "%");
+                      setter(R.id.cityweather_wind_speedView, City.findById(id_city).speed + " м/c");
 
-                      TextView tv2 = (TextView) findViewById(R.id.weatherTypeLabel);
-                      tv2.setText(City.findById(id_city).weather_desc+" / "+City.findById(id_city).weather_code);
+                      setter(R.id.cityweather_morningTemperatureView, City.findById(id_city).morning + "°");
+                      setter(R.id.cityweather_dayTemperatureView, City.findById(id_city).day + "°");
+                      setter(R.id.cityweather_eveningTemperatureView, City.findById(id_city).evening + "°");
+                      setter(R.id.cityweather_nightTemperatureView, City.findById(id_city).night + "°");
 
                       ImageView iv = (ImageView)findViewById(R.id.imageView);
                       iv.setImageResource(getImageByType(City.findById(id_city).weather_code));
